@@ -1,0 +1,63 @@
+
+
+
+
+
+    docker network create neo4j__nodejs__net
+    docker network rm neo4j__nodejs__net
+
+#   http://localhost:27474/browser/
+
+# Db-viewer 
+    docker run                                                         ^
+        --name=neo4j__container                                        ^
+        --env-file=sffaudio_search.env                                 ^
+        --network=neo4j__nodejs__net                                   ^
+        -p 27474:7474 -p 27687:7687                                    ^
+        -v C:\cc\sffaudio-search\server-content/neo4j-data/data:/data  ^
+        -v C:\cc\sffaudio-search\server-content/neo4j-data/logs:/logs  ^
+        neo4j:3.4.9                                                    
+
+#no Db-viewer
+    docker run                                                         ^
+        --name=neo4j__container                                        ^
+        --env-file=sffaudio_search.env                                 ^
+        --network=neo4j__nodejs__net                                   ^
+        -p 0:7474 -p 0:7687                                            ^
+        -v C:\cc\sffaudio-search\server-content/neo4j-data/data:/data  ^
+        -v C:\cc\sffaudio-search\server-content/neo4j-data/logs:/logs  ^
+        neo4j:3.4.9   
+
+
+    docker build -t steenhansen/sff-audio-search:base-nodejs .    --no-cache
+    
+    docker push steenhansen/sff-audio-search:base-nodejs
+
+FOR http://localhost:80/
+    docker run                                    ^
+        --name=web__container                     ^
+        --env-file=sffaudio_search.env            ^
+        --network=neo4j__nodejs__net              ^
+        -e NEO4J_CONTAINER_NAME=neo4j__container  ^
+        -p 80:8080                                ^
+        steenhansen/sff-audio-search:base-nodejs   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

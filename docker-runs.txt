@@ -1,7 +1,7 @@
 
 
 
-
+cd C:/sffaudio-search-docker-run-master/server-content/
 
     docker network create neo4j__nodejs__net
     docker network rm neo4j__nodejs__net
@@ -9,23 +9,23 @@
 #   http://localhost:27474/browser/
 
 # Db-viewer 
-    docker run                                                         ^
-        --name=neo4j__container                                        ^
-        --env-file=sffaudio_search.env                                 ^
-        --network=neo4j__nodejs__net                                   ^
-        -p 27474:7474 -p 27687:7687                                    ^
-        -v C:\cc\sffaudio-search\server-content/neo4j-data/data:/data  ^
-        -v C:\cc\sffaudio-search\server-content/neo4j-data/logs:/logs  ^
+    docker run                                                                        ^
+        --name=neo4j__container                                                       ^
+        --env-file=sffaudio_search.env                                                ^
+        --network=neo4j__nodejs__net                                                  ^
+        -p 27474:7474 -p 27687:7687                                                   ^
+        -v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/data:/data  ^
+        -v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/logs:/logs  ^
         neo4j:3.4.9                                                    
 
 #no Db-viewer
-    docker run                                                         ^
-        --name=neo4j__container                                        ^
-        --env-file=sffaudio_search.env                                 ^
-        --network=neo4j__nodejs__net                                   ^
-        -p 0:7474 -p 0:7687                                            ^
-        -v C:\cc\sffaudio-search\server-content/neo4j-data/data:/data  ^
-        -v C:\cc\sffaudio-search\server-content/neo4j-data/logs:/logs  ^
+    docker run                                                                        ^
+        --name=neo4j__container                                                       ^
+        --env-file=sffaudio_search.env                                                ^
+        --network=neo4j__nodejs__net                                                  ^
+        -p 0:7474 -p 0:7687                                                           ^
+        -v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/data:/data  ^
+        -v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/logs:/logs  ^
         neo4j:3.4.9   
 
 

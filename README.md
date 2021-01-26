@@ -43,7 +43,7 @@ Four blog posts, a PDF, an RSD, an MP3, a Wikipedia story link, and a link back 
 Steps | &nbsp;
 ------------ | -------------
 1 Get Docker | [Download](https://hub.docker.com/editions/community/docker-ce-desktop-windows/) Docker Desktop for Windows
-2 Enter /server-content/ | *cd C:/sffaudio-search-docker-run-master/sffaudio-search/server-content/*
+2 Enter /server-content/ | *cd C:/sffaudio-search-docker-run-master/server-content/*
 3 Create docker network | *docker network create neo4j__nodejs__net*
 4 Run Neo4j db container | *docker run ^*
 &nbsp; | &nbsp;&nbsp;*--name=neo4j__container ^*
@@ -51,8 +51,8 @@ Steps | &nbsp;
 &nbsp; | &nbsp;&nbsp;*--network=neo4j__nodejs__net ^* 
 &nbsp; | &nbsp;&nbsp;*-p 27474:7474 -p 27687:7687 ^*
 &nbsp; | &nbsp;&nbsp;*--env-file=sffaudio_search.env ^*
-&nbsp; | &nbsp;&nbsp;*-v C:\sffaudio-search-docker-run-master\sffaudio-search\server-content/neo4j-data/data:/data ^*
-&nbsp; | &nbsp;&nbsp;*-v C:\sffaudio-search-docker-run-master\sffaudio-search\server-content/neo4j-data/logs:/logs ^*
+&nbsp; | &nbsp;&nbsp;*-v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/data:/data ^*
+&nbsp; | &nbsp;&nbsp;*-v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/logs:/logs ^*
 &nbsp; | &nbsp;&nbsp;*neo4j:3.4.9* 
 5 View Neo4j db page | *http://localhost:27474/browser* 
 6 Build Nodejs image | *docker build -t steenhansen/sff-audio-search:base-nodejs .*

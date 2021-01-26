@@ -46,23 +46,23 @@ Steps | &nbsp;
 2 Enter /server-content/ | *cd C:/sffaudio-search-docker-run-master/server-content/*
 3 Create docker network | *docker network create neo4j__nodejs__net*
 4 Run Neo4j db container | *docker run ^*
-&nbsp; | &nbsp;&nbsp;*--name=neo4j__container ^*
-&nbsp; | &nbsp;&nbsp;*--env-file=sffaudio_search.env ^*
-&nbsp; | &nbsp;&nbsp;*--network=neo4j__nodejs__net ^* 
-&nbsp; | &nbsp;&nbsp;*-p 27474:7474 -p 27687:7687 ^*
-&nbsp; | &nbsp;&nbsp;*--env-file=sffaudio_search.env ^*
-&nbsp; | &nbsp;&nbsp;*-v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/data:/data ^*
-&nbsp; | &nbsp;&nbsp;*-v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/logs:/logs ^*
-&nbsp; | &nbsp;&nbsp;*neo4j:3.4.9* 
+&nbsp; | *--name=neo4j__container ^*
+&nbsp; | *--env-file=sffaudio_search.env ^*
+&nbsp; | *--network=neo4j__nodejs__net ^* 
+&nbsp; | *-p 27474:7474 -p 27687:7687 ^*
+&nbsp; | *--env-file=sffaudio_search.env ^*
+&nbsp; | *-v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/data:/data ^*
+&nbsp; | *-v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/logs:/logs ^*
+&nbsp; | *neo4j:3.4.9* 
 5 View Neo4j db page | *http://localhost:27474/browser* 
 6 Build Nodejs image | *docker build -t steenhansen/sff-audio-search:base-nodejs .*
 7 Run Nodejs container | *docker run ^*
-&nbsp; | &nbsp;&nbsp;*--name=web__container ^*
-&nbsp; | &nbsp;&nbsp;*--env-file=sffaudio_search.env ^*
-&nbsp; | &nbsp;&nbsp;*--network=neo4j__nodejs__net ^* 
-&nbsp; | &nbsp;&nbsp;*-e NEO4J_CONTAINER_NAME=neo4j__container ^*
-&nbsp; | &nbsp;&nbsp;*-p 80:8080  ^*
-&nbsp; | &nbsp;&nbsp;*steenhansen/sff-audio-search:base-nodejs*
+&nbsp; | *--name=web__container ^*
+&nbsp; | *--env-file=sffaudio_search.env ^*
+&nbsp; | *--network=neo4j__nodejs__net ^* 
+&nbsp; | *-e NEO4J_CONTAINER_NAME=neo4j__container ^*
+&nbsp; | *-p 80:8080  ^*
+&nbsp; | *steenhansen/sff-audio-search:base-nodejs*
 8 View web page | *http://localhost:80/*
 
   

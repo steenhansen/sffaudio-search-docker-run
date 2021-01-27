@@ -76,7 +76,8 @@ Four blog posts, a PDF, an RSD, an MP3, a Wikipedia story link, and a link back 
 &nbsp; | **Password**
 &nbsp; |   &nbsp;&nbsp;&nbsp;&nbsp;    yer_password
 
-		   
+		
+#### Containers on Docker Desktop:
 ![visual explanation](https://github.com/steenhansen/sffaudio-search-docker-run/blob/master/docker-desktop.png)
 
 

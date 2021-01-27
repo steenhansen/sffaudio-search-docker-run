@@ -40,32 +40,51 @@ Four blog posts, a PDF, an RSD, an MP3, a Wikipedia story link, and a link back 
 ## Run program locally on Windows
 
 
-Steps | &nbsp;
+&nbsp; | &nbsp;
 ------------ | -------------
-1 Get Docker | [Download](https://hub.docker.com/editions/community/docker-ce-desktop-windows/) Docker Desktop for Windows
-2 Enter /server-content/ | *cd C:/sffaudio-search-docker-run-master/server-content/*
-3 Create docker network | *docker network create neo4j__nodejs__net*
-4 Run Neo4j db container | *docker run ^*
-&nbsp; | *--name=neo4j__container ^*
-&nbsp; | *--env-file=sffaudio_search.env ^*
-&nbsp; | *--network=neo4j__nodejs__net ^* 
-&nbsp; | *-p 27474:7474 -p 27687:7687 ^*
-&nbsp; | *--env-file=sffaudio_search.env ^*
-&nbsp; | *-v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/data:/data ^*
-&nbsp; | *-v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/logs:/logs ^*
-&nbsp; | *neo4j:3.4.9* 
-5 View Neo4j db page | *http://localhost:27474/browser* 
-6 Build Nodejs image | *docker build -t steenhansen/sff-audio-search:base-nodejs .*
-7 Run Nodejs container | *docker run ^*
-&nbsp; | *--name=web__container ^*
-&nbsp; | *--env-file=sffaudio_search.env ^*
-&nbsp; | *--network=neo4j__nodejs__net ^* 
-&nbsp; | *-e NEO4J_CONTAINER_NAME=neo4j__container ^*
-&nbsp; | *-p 80:8080  ^*
-&nbsp; | *steenhansen/sff-audio-search:base-nodejs*
-8 View web page | *http://localhost:80/*
+**1 Get Docker** | [Download](https://hub.docker.com/editions/community/docker-ce-desktop-windows/) Docker Desktop for Windows
+**2 Enter /server-content/** | \$ cd C:/sffaudio-search-docker-run-master/server-content/
+**3 Create docker network** | $ docker network create neo4j__nodejs__net
+**4 Run Neo4j db container** | &nbsp;
+```
+  $ docker run ^
+    --name=neo4j__container ^
+    --env-file=sffaudio_search.env ^
+    --network=neo4j__nodejs__net ^
+    -p 27474:7474 -p 27687:7687 ^
+    --env-file=sffaudio_search.env ^
+    -v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/data:/data ^
+    -v C:\sffaudio-search-docker-run-master\server-content/neo4j-data/logs:/logs ^
+    neo4j:3.4.9
+```
 
-  
+&nbsp;  | &nbsp;
+------------ | -------------
+**5 Run Nodejs container** | &nbsp;
+``` 
+  $ docker run ^
+    --name=web__container ^
+    --env-file=sffaudio_search.env ^
+    --network=neo4j__nodejs__net ^
+    -e NEO4J_CONTAINER_NAME=neo4j__container ^
+    -p 80:8080  ^
+    steenhansen/sff-audio-search:base-nodejs
+```
+&nbsp; | &nbsp;
+------------ | -------------
+**6 View web page** | http://localhost:80/
+**7 View Neo4j db page** | http://localhost:27474/browser
+&nbsp; | **Connect URL**
+&nbsp; |   &nbsp;&nbsp;&nbsp;&nbsp;    bolt://192.53.120.71:27687
+&nbsp; | **Username**
+&nbsp; |   &nbsp;&nbsp;&nbsp;&nbsp;    neo4j
+&nbsp; | **Password**
+&nbsp; |   &nbsp;&nbsp;&nbsp;&nbsp;    yer_password
+
+
+
+
+
 ## Caveats
 - The Node.js Neo4j-driver used in this project is [1.7.7](https://www.npmjs.com/package/neo4j-driver/v/1.7.7), very old, the current version is 4.2.1 and is not backwards compatible
 - The [Neo4j Docker](https://hub.docker.com/_/neo4j) image used in this project is 3.4.9, very old, the current version is 4.2.2 and is not backwards compatible

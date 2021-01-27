@@ -40,9 +40,8 @@ Four blog posts, a PDF, an RSD, an MP3, a Wikipedia story link, and a link back 
 ## Run program locally on Windows
 
 
-&nbsp; | &nbsp;
+1 Get Docker | [Download](https://hub.docker.com/editions/community/docker-ce-desktop-windows/) Docker Desktop for Windows
 ------------ | -------------
-**1 Get Docker** | [Download](https://hub.docker.com/editions/community/docker-ce-desktop-windows/) Docker Desktop for Windows
 **2 Enter /server-content/** | \$ cd C:/sffaudio-search-docker-run-master/server-content/
 **3 Create docker network** | $ docker network create neo4j__nodejs__net
 **4 Run Neo4j db container** | &nbsp;
@@ -58,9 +57,8 @@ Four blog posts, a PDF, an RSD, an MP3, a Wikipedia story link, and a link back 
     neo4j:3.4.9
 ```
 
-&nbsp;  | &nbsp;
+5 Run Nodejs container | &nbsp;
 ------------ | -------------
-**5 Run Nodejs container** | &nbsp;
 ``` 
   $ docker run ^
     --name=web__container ^
@@ -70,9 +68,9 @@ Four blog posts, a PDF, an RSD, an MP3, a Wikipedia story link, and a link back 
     -p 80:8080  ^
     steenhansen/sff-audio-search:base-nodejs
 ```
-&nbsp; | &nbsp;
+
+6 View web page | http://localhost:80/
 ------------ | -------------
-**6 View web page** | http://localhost:80/
 **7 View Neo4j db page** | http://localhost:27474/browser
 &nbsp; | **Connect URL**
 &nbsp; |   &nbsp;&nbsp;&nbsp;&nbsp;    bolt://192.53.120.71:27687

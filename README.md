@@ -39,7 +39,7 @@ Four blog posts, a PDF, an RSD, an MP3, a Wikipedia story link, and a link back 
 
 1 Get Docker | [Download](https://hub.docker.com/editions/community/docker-ce-desktop-windows/) Docker Desktop for Windows
 | :-- | :-- |
-**2 Enter /server-content/** | \$ cd c:/sffaudio-search-docker-run-master/server-content/
+**2 Enter /server-content/** | \$ cd server-content
 **3 Create docker network** | $ docker network create neo4j__nodejs__net
 **4 Run Neo4j db container** | &nbsp;
 ```
